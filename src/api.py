@@ -4,6 +4,7 @@ from pydantic import BaseModel
 import pickle
 import sklearn
 import numpy as np
+import joblib
 
 app = FastAPI()
 
@@ -34,3 +35,5 @@ def predict(input_data: InputData):
     survival = int(survival)
 
     return {"Survival Prediction": survival}
+
+
