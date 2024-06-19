@@ -3,7 +3,7 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 import pickle
 import sklearn
-import numpy as np
+import numpy as npdocker 
 import joblib
 
 app = FastAPI()
@@ -14,9 +14,7 @@ class InputData(BaseModel):
     sex: int  
     ticket_price: float
 
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
+
 
 def load_model():
     model_path = "../assets/mlcomponents/RandomForestClassifier_model.pkl"  

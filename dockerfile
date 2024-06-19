@@ -18,6 +18,9 @@ RUN pip install -r requirements.txt
 # Copier le reste de l'application
 COPY . /app/
 
+# Changer le répertoire de travail vers /src
+WORKDIR /app/src
+
 # Exposer les ports que les applications vont utiliser
 EXPOSE 8000 8501
 
