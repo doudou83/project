@@ -5,6 +5,7 @@ import pickle
 import sklearn
 import numpy as npdocker 
 import joblib
+import numpy as np
 
 app = FastAPI()
 
