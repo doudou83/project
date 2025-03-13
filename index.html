@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulaire de Paiement</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .payment-form {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+    .payment-form h1 {
+      text-align: center;
+      color: #333;
+    }
+    .payment-form label {
+      display: block;
+      margin-top: 10px;
+      color: #555;
+    }
+    .payment-form input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .payment-form button {
+      width: 100%;
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    .payment-form button:hover {
+      background-color: #45a049;
+    }
+  </style>
+  <script>
+    function validateForm() {
+      const cardNumber = document.getElementById('card-number').value;
+      const expiryDate = document.getElementById('expiry-date').value;
+      const email = document.getElementById('email').value;
+
+      const cardNumberRegex = /^\d{16}$/;
+      const expiryDateRegex = /^\d{2}\/\d{2}$/;
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (!cardNumberRegex.test(cardNumber)) {
+        alert('Veuillez entrer un numéro de carte valide à 16 chiffres.');
+        return false;
+      }
+
+      if (!expiryDateRegex.test(expiryDate)) {
+        alert("Veuillez entrer une date d'expiration valide au format MM/AA.");
+        return false;
+      }
+
+      if (!emailRegex.test(email)) {
+        alert('Veuillez entrer une adresse email valide.');
+        return false;
+      }
+
+      return true;
+    }
+  </script>
+</head>
+<body>
+  <form class="payment-form" action="traitement.php" method="POST" onsubmit="return validateForm()">
+    <h1>Paiement de la Formation</h1>
+    <label for="card-number">Numéro de carte :</label>
+    <input type="text" id="card-number" name="card-number" required>
+
+    <label for="expiry-date">Date d'expiration :</label>
+    <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/AA" required>
+
+    <label for="email">Email :</label>
+    <input type="email" id="email" name="email" required>
+
+    <button type="submit">Payer</button>
+  </form>
+</body>
+</html>
